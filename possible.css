@@ -1,0 +1,14 @@
+
+nice numbering for nested items:
+
+div#toc ol {
+    counter-reset: item
+}
+div#toc li {
+    display: block
+}
+div#toc li:before {
+    content: counters(item, ".")" ";
+    counter-increment: item
+}
+
