@@ -39,8 +39,8 @@
 
     var get_level = function(ele) { return parseInt(ele.nodeName.replace("H", ""), 10); }
     var highest_level = headers.map(function(_, ele) { return get_level(ele); }).get().sort()[0];
-    var return_to_top = '<i class="icon-arrow-up back-to-top"> </i>';
-
+    var return_to_top = '<i class="glyphicon glyphicon-chevron-up back-to-top">  </i>';
+    // other nice icons that can be used instead: glyphicon-upload glyphicon-hand-up glyphicon-chevron-up glyphicon-menu-up glyphicon-triangle-top
     var level = get_level(headers[0]),
       this_level,
       html = settings.title + " <"+settings.listType+">";
@@ -54,8 +54,8 @@
       base_url = window.location.href;
       base_url = base_url.replace(/#.*$/, "");
       this_level = get_level(header);
-      if (!settings.noBackToTopLinks && this_level === highest_level) {
-        $(header).addClass('top-level-header').after(return_to_top);
+      if (!settings.noBackToTopLinks && this_level > 1) {
+        $(header).addClass('top-level-header').append(return_to_top);
       }
       txt = header.textContent.split('¶')[0].split('(')[0];
       if (!txt) {return;}
